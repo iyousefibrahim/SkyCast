@@ -1,5 +1,54 @@
 <main class="h-10">
     <div class="layer">
-        <h1>Test</h1>
+
+        <div class="container px-4 mx-auto h-lvh">
+
+            <div class="flex items-center w-full h-full parent">
+                @if(currentWeatherData){
+                <div class="flex flex-col gap-y-5 items-center justify-center w-1/4 p-3 bg-[#ddddde] bg-opacity-20 h-5/6 rounded-l-3xl">
+
+                    <div id="Search" class="relative w-full">
+                            <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 pl-10 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for places ..." />
+                        <div class="absolute left-0 flex items-center pl-3 pointer-events-none top-3">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </div>
+
+                    </div>
+
+                    <div id="weather-icon" class="self-start w-1/2">
+                        <img class="w-full"
+                            [src]="'./assets/conditions/' + currentWeatherData.current.condition.text + '.svg'"
+                            alt="{{currentWeatherData.current.condition.text}}">
+                    </div>
+
+                    <div class="w-full bg-green-400">
+                        <h2>{{currentWeatherData.location.region}}</h2>
+                        <h3 class="text-4xl">{{currentWeatherData.current.temp_c}}°C</h3>
+                        <div class="flex gap-1">
+                        <p>{{currentWeatherData.location.localtime | date:'EEEE' }}</p>
+                        <p>{{currentWeatherData.location.localtime | date:'shortTime'}}</p>
+                        </div>
+                    </div>
+
+                    <div class="w-full bg-red-600">
+                        <h6><i class="fa-solid fa-cloud"></i>{{currentWeatherData.current.condition.text}}</h6>
+                        <h6><i class="fa-solid fa-droplet"></i>{{currentWeatherData.current.humidity}}%</h6>
+                    </div>
+
+
+                </div>
+
+                <div class="w-3/4 bg-blue-200 h-5/6 rounded-r-3xl">
+                    <div class="links">
+                        <a>Today</a>
+                        <a>Week</a>
+                    </div>
+                </div>
+                }
+
+            </div>
+
+        </div>
+
     </div>
 </main>
