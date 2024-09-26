@@ -1,0 +1,26 @@
+@if(date === 'Week') {
+<div class="flex gap-3">
+
+    @for (item of _WeatherService.weatherdata().forecast.forecastday; track $index) {
+    <div class="flex flex-col flex-wrap items-center justify-center w-2/5 bg-slate-200 rounded-xl">
+        <h3 class="font-bold">{{item.date | date:'EEEE'}}</h3>
+        <img class="w-1/4" src="{{item.day.condition.icon}}" alt="{{item.day.condition.text}}">
+        <h3 class="font-bold">{{item.day.maxtemp_c}}</h3>
+    </div>
+    }
+
+</div>
+}
+@if(date === 'Today') {
+<div class="flex flex-wrap items-center justify-center gap-2 lg:flex-nowrap">
+    @for (hour of this._WeatherService.weatherdata().forecast.forecastday[0].hour; track $index) {
+    @if ($index === 12 || $index === 15 || $index === 18 || $index === 21 || $index === 23) {
+    <div class="flex flex-col flex-wrap items-center justify-center w-1/5 md:w-1/5 bg-slate-200 rounded-xl">
+        <h3 class="font-bold">{{hour.time | date:"shortTime"}}</h3>
+        <img class="w-1/4" src="{{hour.condition.icon}}" alt="{{hour.condition.text}}">
+        <h3 class="font-bold">{{hour.temp_c}} °C</h3>
+    </div>
+    }
+    }
+</div>
+}
