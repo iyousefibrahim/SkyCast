@@ -5,11 +5,16 @@ import { Weather } from '../../Core/Interfaces/weather';
 import { DatePipe } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { WeatherUVComponent } from "../weather-uv/weather-uv.component";
+import { WeatherWindstatusComponent } from "../weather-windstatus/weather-windstatus.component";
+import { WeatherHumidityComponent } from "../weather-humidity/weather-humidity.component";
+import { WeatherVisibilityComponent } from "../weather-visibility/weather-visibility.component";
+import { WeatherAirqualityComponent } from "../weather-airquality/weather-airquality.component";
 
 @Component({
   selector: 'app-weather-widget',
   standalone: true,
-  imports: [DatePipe, RouterLink, RouterOutlet, FormsModule, RouterLinkActive],
+  imports: [DatePipe, RouterLink, RouterOutlet, FormsModule, RouterLinkActive, WeatherUVComponent, WeatherWindstatusComponent, WeatherHumidityComponent, WeatherVisibilityComponent, WeatherAirqualityComponent],
   templateUrl: './weather-widget.component.html',
   styleUrls: ['./weather-widget.component.scss']
 })
@@ -36,7 +41,6 @@ export class WeatherWidgetComponent implements OnInit {
         next: (res) => {
           this.currentWeatherData = res;
           this._WeatherService.weatherdata.set(res);
-          console.log(this._WeatherService.weatherdata(),"testtttttttt");
         },
       });
   }

@@ -1,23 +1,23 @@
 @if(date === 'Week') {
 <div class="flex gap-3">
 
-    @for (item of _WeatherService.weatherdata().forecast.forecastday; track $index) {
-    <div class="flex flex-col flex-wrap items-center justify-center w-2/5 bg-slate-200 rounded-xl">
+    @for (item of weatherData().forecast?.forecastday; track $index) {
+    <div class="flex flex-col flex-wrap items-center justify-center w-2/5 bg-white p-5 rounded-xl">
         <h3 class="font-bold">{{item.date | date:'EEEE'}}</h3>
         <img class="w-1/4" src="{{item.day.condition.icon}}" alt="{{item.day.condition.text}}">
-        <h3 class="font-bold">{{item.day.maxtemp_c}}</h3>
+        <h3 class="font-bold">{{item.day.maxtemp_c}}<span class="text-sm">°C</span></h3>
     </div>
     }
 
 </div>
 }
 @if(date === 'Today') {
-<div class="flex flex-wrap items-center justify-center gap-2 lg:flex-nowrap">
-    @for (hour of this._WeatherService.weatherdata().forecast.forecastday[0].hour | hours; track $index) {
-    <div class="flex flex-col flex-wrap items-center justify-center w-1/5 md:w-1/5 bg-slate-200 rounded-xl">
+<div class="flex flex-wrap items-center justify-between gap-2 lg:flex-nowrap">
+    @for (hour of weatherData().forecast?.forecastday[0].hour | hours; track $index) {
+    <div class="flex flex-col flex-wrap items-center justify-center w-2/5 md:w-1/4 bg-white p-5 rounded-xl">
         <h3 class="font-bold">{{hour.time | date:"shortTime"}}</h3>
         <img class="w-1/4" src="{{hour.condition.icon}}" alt="{{hour.condition.text}}">
-        <h3 class="font-bold">{{hour.temp_c}} °C</h3>
+        <h3 class="font-bold">{{hour.temp_c}}<span class="text-sm">°C</span></h3>
     </div>
     
     }
