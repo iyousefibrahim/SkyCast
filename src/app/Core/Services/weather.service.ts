@@ -12,11 +12,11 @@ export class WeatherService {
   scaleUnit: WritableSignal<string> = signal("C");
 
   getCurrent(city: string): Observable<any> {
-    return this._HttpClient.get(`http://api.weatherapi.com/v1/current.json?key=70922293e0264ef0ac2211409241506&q=${city}&aqi=yes`);
+    return this._HttpClient.get(`https://api.weatherapi.com/v1/current.json?key=70922293e0264ef0ac2211409241506&q=${city}&aqi=yes`);
   }
 
   getForecast(city: string, days: number): Observable<any> {
-    return this._HttpClient.get(`http://api.weatherapi.com/v1/forecast.json?key=70922293e0264ef0ac2211409241506&q=${city}&days=${days}&aqi=yes&alerts=no`);
+    return this._HttpClient.get(`https://api.weatherapi.com/v1/forecast.json?key=70922293e0264ef0ac2211409241506&q=${city}&days=${days}&aqi=yes&alerts=no`);
   }
 
   getUserCity(): Observable<any> {
