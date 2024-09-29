@@ -1,8 +1,8 @@
-import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
+import { Component, computed, inject, OnInit, Signal, signal, WritableSignal } from '@angular/core';
 import { WeatherService } from '../../Core/Services/weather.service';
 import { startWith, tap } from 'rxjs/operators';
 import { Weather } from '../../Core/Interfaces/weather';
-import { DatePipe } from '@angular/common';
+import { DatePipe, NgClass } from '@angular/common';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { WeatherUVComponent } from "../weather-uv/weather-uv.component";
@@ -16,7 +16,11 @@ import { WeatherSunstatusComponent } from "../weather-sunstatus/weather-sunstatu
 @Component({
   selector: 'app-weather-widget',
   standalone: true,
-  imports: [DatePipe, RouterLink, RouterOutlet, FormsModule, RouterLinkActive, WeatherUVComponent, WeatherWindstatusComponent, WeatherHumidityComponent, WeatherVisibilityComponent, WeatherAirqualityComponent, WeatherSunstatusComponent],
+  imports: [
+    DatePipe, RouterLink, RouterOutlet, FormsModule,
+    RouterLinkActive, WeatherUVComponent, WeatherWindstatusComponent,
+    WeatherHumidityComponent, WeatherVisibilityComponent, WeatherAirqualityComponent,
+    WeatherSunstatusComponent,NgClass],
   templateUrl: './weather-widget.component.html',
   styleUrls: ['./weather-widget.component.scss']
 })
@@ -24,6 +28,9 @@ export class WeatherWidgetComponent implements OnInit {
   private readonly _WeatherService = inject(WeatherService);
   userCurrentCity: WritableSignal<string> = signal("");
   currentWeatherData!: Weather;
+  currentScaleunit: Signal<string> = computed(() => {
+    return this._WeatherService.scaleUnit();
+  })
   searchValue: string = "";
 
   getUserCity() {
@@ -37,15 +44,15 @@ export class WeatherWidgetComponent implements OnInit {
 
   getForecast(city: string) {
     this._WeatherService.weatherdata.set(this.searchValue);
-      this._WeatherService.getForecast(city, 7).subscribe({
-        next: (res) => {
-          this.currentWeatherData = res;
-          this._WeatherService.weatherdata.set(res);
-        },
-      });
+    this._WeatherService.getForecast(city, 7).subscribe({
+      next: (res) => {
+        this.currentWeatherData = res;
+        this._WeatherService.weatherdata.set(res);
+      },
+    });
   }
-  
-  getCountry(city:string){
+
+  getCountry(city: string) {
     return this._WeatherService.getCountryImg(city).subscribe({
       next: (res) => {
         console.log(res);
@@ -53,7 +60,7 @@ export class WeatherWidgetComponent implements OnInit {
     })
   }
 
-  scale(scale :string){
+  scale(scale: string) {
     this._WeatherService.scaleUnit.set(scale);
   }
 

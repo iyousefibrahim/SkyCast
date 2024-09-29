@@ -1,4 +1,6 @@
-<div class="bg-white h-full p-5 px-8 rounded-lg shadow-md flex justify-center items-center flex-col">
-    <h5>UV Index</h5>
-    <p>{{weatherdata().current?.uv}}</p>
+<div class="bg-white h-full p-5 rounded-lg shadow-md flex  items-center flex-col">
+    <h3 class="self-center">UV Index</h3>
+    <div class="h-full w-full flex justify-center items-center">
+        <h4 class="text-2xl self-center"><i class="fa-solid fa-temperature-full me-2"></i>{{weatherdata().current?.uv}}</h4>
+    </div>
 </div>

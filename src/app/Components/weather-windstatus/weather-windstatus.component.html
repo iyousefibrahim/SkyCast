@@ -1,6 +1,6 @@
-<div class="bg-white h-full p-5 px-8 rounded-lg shadow-md flex justify-center items-center flex-col">
+<div class="bg-white gap-y-3 h-full p-5 px-8 rounded-lg shadow-md flex justify-center items-center flex-col">
     <h3>Wind Status</h3>
-    <h4>{{weatherdata().current?.wind_kph}} <span>km/h</span></h4>
-    <p><i class="fa-solid fa-compass me-2"></i>{{weatherdata().current?.wind_dir}}</p>
+    <h4 class="text-3xl">{{weatherdata().current?.wind_kph}}<span class="text-xl">km/h</span></h4>
+    <p><i class="fa-solid fa-compass me-2 text-blue-500"></i>{{weatherdata().current?.wind_dir}}</p>
 </div>
 

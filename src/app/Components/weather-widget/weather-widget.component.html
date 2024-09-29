@@ -34,20 +34,21 @@
 
                     <div class="w-full text-white">
                         <h6><i
-                                class="text-white me-2 fa-solid fa-cloud"></i>{{currentWeatherData.current.condition.text}}
+                                class="text-white my-3 me-2 fa-solid fa-cloud"></i>{{currentWeatherData.current.condition.text}}
                         </h6>
                         <h6><i
                                 class="text-blue-500 me-2 fa-solid fa-droplet"></i>{{currentWeatherData.current.humidity}}%
                         </h6>
                     </div>
-                   
-                  
-                   
+
+
+
                 </div>
             </div>
 
 
-            <div class="section2 p-5 lg:w-3/5 w-full  bg-white bg-opacity-35 lg:rounded-r-2xl lg:rounded-br-2xl  rounded-b-2xl lg:rounded-b-none">
+            <div
+                class="section2 p-5 lg:w-3/5 w-full  bg-white bg-opacity-35 lg:rounded-r-2xl lg:rounded-br-2xl  rounded-b-2xl lg:rounded-b-none">
                 <div class="container px-4 h-full mx-auto">
                     <div class="flex  items-center justify-between">
                         <div class="flex gap-3 my-5 links">
@@ -57,8 +58,16 @@
                                 routerLink="week">Week</a>
                         </div>
                         <div class="flex gap-3">
-                            <button type="button" (click)="scale('C')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">C</button>
-                            <button type="button" (click)="scale('F')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">F</button>
+
+                            <button [ngClass]="{
+                                'bg-blue-900': currentScaleunit() === 'C',
+                            }" type="button" (click)="scale('C')"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">C</button>
+
+                            <button [ngClass]="{
+                                'bg-blue-900': currentScaleunit() === 'F',
+                            }" type="button" (click)="scale('F')"
+                                class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">F</button>
                         </div>
                     </div>
 
