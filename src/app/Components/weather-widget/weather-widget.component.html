@@ -20,7 +20,7 @@
                     <div id="weather-icon" class="w-1/2">
                         <img class="w-full"
                             [src]="'./assets/conditions/' + currentWeatherData.current.condition.text.toLowerCase() + '.svg'"
-                            alt="{{currentWeatherData.current.condition.text}}">
+                            alt="{{currentWeatherData.current.condition.text}}" (error)="handleImageError($event)">
                     </div>
 
                     <div class="w-full text-white">

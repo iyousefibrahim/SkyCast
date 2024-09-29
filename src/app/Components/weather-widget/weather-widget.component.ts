@@ -20,7 +20,7 @@ import { WeatherSunstatusComponent } from "../weather-sunstatus/weather-sunstatu
     DatePipe, RouterLink, RouterOutlet, FormsModule,
     RouterLinkActive, WeatherUVComponent, WeatherWindstatusComponent,
     WeatherHumidityComponent, WeatherVisibilityComponent, WeatherAirqualityComponent,
-    WeatherSunstatusComponent,NgClass],
+    WeatherSunstatusComponent, NgClass],
   templateUrl: './weather-widget.component.html',
   styleUrls: ['./weather-widget.component.scss']
 })
@@ -49,7 +49,7 @@ export class WeatherWidgetComponent implements OnInit {
         this.currentWeatherData = res;
         this._WeatherService.weatherdata.set(res);
       },
-      error:(err)=>{
+      error: (err) => {
         this.getForecast(this.userCurrentCity());
         console.log('Cannot Find This City!');
       }
@@ -66,6 +66,10 @@ export class WeatherWidgetComponent implements OnInit {
 
   scale(scale: string) {
     this._WeatherService.scaleUnit.set(scale);
+  }
+
+  handleImageError(event: any) {
+    event.target.src = this.currentWeatherData.current.condition.icon;
   }
 
   ngOnInit(): void {
