@@ -14,6 +14,7 @@ import { Weather } from '../../Core/Interfaces/weather';
 export class WeatherTimeComponent {
   readonly _WeatherService = inject(WeatherService);
   @Input() date!:string;
+  @Input() scale!:string;
   weatherData : Signal<any> = computed(()=>{
     return this._WeatherService.weatherdata();
   });

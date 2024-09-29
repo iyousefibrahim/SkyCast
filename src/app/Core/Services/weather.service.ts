@@ -22,4 +22,8 @@ export class WeatherService {
     return this._HttpClient.get(`https://ipinfo.io?token=aa5864c1c3c2a3`);
   }
 
+  getCountryImg(city: string): Observable<any> {
+    return this._HttpClient.get(`https://api.unsplash.com/search/photos?page=1&query=$${city}&client_id=maVgNo3IKVd7Pw7-_q4fywxtQCACntlNXKBBsFdrBzI&per_page=5&orientation=landscape`);
+  }
+
 }

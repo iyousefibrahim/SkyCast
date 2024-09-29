@@ -10,11 +10,13 @@ import { WeatherWindstatusComponent } from "../weather-windstatus/weather-windst
 import { WeatherHumidityComponent } from "../weather-humidity/weather-humidity.component";
 import { WeatherVisibilityComponent } from "../weather-visibility/weather-visibility.component";
 import { WeatherAirqualityComponent } from "../weather-airquality/weather-airquality.component";
+import { WeatherSunstatusComponent } from "../weather-sunstatus/weather-sunstatus.component";
+
 
 @Component({
   selector: 'app-weather-widget',
   standalone: true,
-  imports: [DatePipe, RouterLink, RouterOutlet, FormsModule, RouterLinkActive, WeatherUVComponent, WeatherWindstatusComponent, WeatherHumidityComponent, WeatherVisibilityComponent, WeatherAirqualityComponent],
+  imports: [DatePipe, RouterLink, RouterOutlet, FormsModule, RouterLinkActive, WeatherUVComponent, WeatherWindstatusComponent, WeatherHumidityComponent, WeatherVisibilityComponent, WeatherAirqualityComponent, WeatherSunstatusComponent],
   templateUrl: './weather-widget.component.html',
   styleUrls: ['./weather-widget.component.scss']
 })
@@ -23,8 +25,6 @@ export class WeatherWidgetComponent implements OnInit {
   userCurrentCity: WritableSignal<string> = signal("");
   currentWeatherData!: Weather;
   searchValue: string = "";
-
-  
 
   getUserCity() {
     return this._WeatherService.getUserCity().pipe(
@@ -41,8 +41,18 @@ export class WeatherWidgetComponent implements OnInit {
         next: (res) => {
           this.currentWeatherData = res;
           this._WeatherService.weatherdata.set(res);
+          console.log(res);
+          
         },
       });
+  }
+  
+  getCountry(city:string){
+    return this._WeatherService.getCountryImg(city).subscribe({
+      next: (res) => {
+        console.log(res);
+      }
+    })
   }
 
   ngOnInit(): void {

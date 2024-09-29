@@ -1,10 +1,12 @@
 @if (currentWeatherData) {
-    <main class="min-h-screen h-full">
+<main class="min-h-screen h-full">
     <div class="container h-full min-h-screen px-4 mx-auto flex justify-center items-center">
         <div class="flex my-5 h-full flex-col lg:flex-row items-center lg:items-stretch">
-            
-            <div class="section1 p-5 lg:w-2/5 w-full  bg-white bg-opacity-25 lg:rounded-l-2xl lg:rounded-tl-2xl rounded-t-2xl lg:rounded-t-none">
+
+            <div
+                class="section1 p-5 lg:w-2/5 w-full  bg-white bg-opacity-25 lg:rounded-l-2xl lg:rounded-tl-2xl rounded-t-2xl lg:rounded-t-none">
                 <div class="container gap-y-3 flex flex-col  px-4 mx-auto">
+
                     <div id="Search" class="w-full">
                         <div class="flex flex-col items-center justify-center gap-2 lg:flex-row">
                             <input [(ngModel)]="searchValue" type="text"
@@ -38,35 +40,48 @@
                                 class="text-blue-500 me-2 fa-solid fa-droplet"></i>{{currentWeatherData.current.humidity}}%
                         </h6>
                     </div>
+                   
+                  
+                   
                 </div>
             </div>
 
-            
+
             <div class="section2 p-5 lg:w-3/5 w-full  bg-white bg-opacity-35 lg:rounded-r-2xl lg:rounded-br-2xl  rounded-b-2xl lg:rounded-b-none">
                 <div class="container px-4 h-full mx-auto">
-                    <div class="flex gap-3 my-5 links">
-                        <a class="p-2" routerLinkActive="bg-blue-600  transition-all rounded-xl text-white"
-                            routerLink="today">Today</a>
-                        <a class="p-2" routerLinkActive="bg-blue-600  transition-all rounded-xl text-white"
-                            routerLink="week">Week</a>
+                    <div class="flex  items-center justify-between">
+                        <div class="flex gap-3 my-5 links">
+                            <a class="p-2" routerLinkActive="bg-blue-600  transition-all rounded-xl text-white"
+                                routerLink="today">Today</a>
+                            <a class="p-2" routerLinkActive="bg-blue-600  transition-all rounded-xl text-white"
+                                routerLink="week">Week</a>
+                        </div>
+                        <div class="flex gap-3">
+                            <h3>C</h3>
+                            <h3>F</h3>
+                        </div>
                     </div>
 
                     <router-outlet></router-outlet>
                     <h2 class="my-3 text-3xl lg:text-xl text-pretty">Today's Highlights:</h2>
-                    <div class="flex flex-wrap gap-y-3 md:gap-y-3 gap-1  flex-col lg:flex-row items-center lg:items-stretch justify-center lg:justify-between my-3">
-                        <div class="lg:w-1/4 w-full">
+                    <div
+                        class="flex flex-wrap gap-y-3 md:gap-y-3 gap-1  flex-col lg:flex-row items-center lg:items-stretch justify-center lg:justify-between my-3">
+                        <div class="lg:w-[30%] w-full">
                             <app-weather-uv></app-weather-uv>
                         </div>
-                        <div class="lg:w-1/4 w-full">
+                        <div class="lg:w-[30%] w-full">
                             <app-weather-windstatus></app-weather-windstatus>
                         </div>
-                        <div class="lg:w-1/4 w-full">
+                        <div class="lg:w-[30%] w-full">
+                            <app-weather-sunstatus></app-weather-sunstatus>
+                        </div>
+                        <div class="lg:w-[30%] w-full">
                             <app-weather-humidity></app-weather-humidity>
                         </div>
-                        <div class="lg:w-1/4 w-full">
+                        <div class="lg:w-[30%] w-full">
                             <app-weather-visibility></app-weather-visibility>
                         </div>
-                        <div class="lg:w-1/4 w-full">
+                        <div class="lg:w-[30%] w-full">
                             <app-weather-airquality></app-weather-airquality>
                         </div>
                     </div>
