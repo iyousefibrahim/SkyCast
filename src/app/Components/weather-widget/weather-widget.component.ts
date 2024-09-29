@@ -49,6 +49,10 @@ export class WeatherWidgetComponent implements OnInit {
         this.currentWeatherData = res;
         this._WeatherService.weatherdata.set(res);
       },
+      error:(err)=>{
+        this.getForecast(this.userCurrentCity());
+        console.log('Cannot Find This City!');
+      }
     });
   }
 
