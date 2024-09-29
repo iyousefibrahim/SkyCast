@@ -41,8 +41,6 @@ export class WeatherWidgetComponent implements OnInit {
         next: (res) => {
           this.currentWeatherData = res;
           this._WeatherService.weatherdata.set(res);
-          console.log(res);
-          
         },
       });
   }
@@ -53,6 +51,10 @@ export class WeatherWidgetComponent implements OnInit {
         console.log(res);
       }
     })
+  }
+
+  scale(scale :string){
+    this._WeatherService.scaleUnit.set(scale);
   }
 
   ngOnInit(): void {

@@ -7,15 +7,19 @@ import { Weather } from '../../Core/Interfaces/weather';
 @Component({
   selector: 'app-weather-time',
   standalone: true,
-  imports: [DatePipe,HoursPipe],
+  imports: [DatePipe, HoursPipe],
   templateUrl: './weather-time.component.html',
   styleUrl: './weather-time.component.scss'
 })
 export class WeatherTimeComponent {
   readonly _WeatherService = inject(WeatherService);
-  @Input() date!:string;
-  @Input() scale!:string;
-  weatherData : Signal<any> = computed(()=>{
+  @Input() date!: string;
+
+  weatherData: Signal<any> = computed(() => {
     return this._WeatherService.weatherdata();
+  });
+  
+  ScaleUnit: Signal<any> = computed(() => {
+    return this._WeatherService.scaleUnit();
   });
 }

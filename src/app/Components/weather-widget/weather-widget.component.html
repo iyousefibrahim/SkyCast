@@ -57,13 +57,13 @@
                                 routerLink="week">Week</a>
                         </div>
                         <div class="flex gap-3">
-                            <h3>C</h3>
-                            <h3>F</h3>
+                            <button type="button" (click)="scale('C')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">C</button>
+                            <button type="button" (click)="scale('F')" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">F</button>
                         </div>
                     </div>
 
                     <router-outlet></router-outlet>
-                    <h2 class="my-3 text-3xl lg:text-xl text-pretty">Today's Highlights:</h2>
+                    <h2 class="my-3 text-3xl lg:text-xl text-pretty text-white">Today's Highlights:</h2>
                     <div
                         class="flex flex-wrap gap-y-3 md:gap-y-3 gap-1  flex-col lg:flex-row items-center lg:items-stretch justify-center lg:justify-between my-3">
                         <div class="lg:w-[30%] w-full">

@@ -5,7 +5,12 @@
     <div class="flex flex-col flex-wrap items-center justify-center w-2/5 bg-white p-5 rounded-xl">
         <h3 class="font-bold">{{item.date | date:'EEEE'}}</h3>
         <img class="w-1/4" src="{{item.day.condition.icon}}" alt="{{item.day.condition.text}}">
-        <h3 class="font-bold">{{item.day.maxtemp_c}}<span class="text-sm">°C</span></h3>
+        @if (ScaleUnit() === 'C') {
+            <h3 class="font-bold">{{item.day.maxtemp_c}}<span class="text-sm">°C</span></h3>
+        }
+        @else {
+            <h3 class="font-bold">{{item.day.maxtemp_f}}<span class="text-sm">°F</span></h3>
+        }
     </div>
     }
 
@@ -17,7 +22,12 @@
     <div class="flex flex-col flex-wrap items-center justify-center w-2/5 md:w-1/4 bg-white p-5 rounded-xl">
         <h3 class="font-bold">{{hour.time | date:"shortTime"}}</h3>
         <img class="w-1/4" src="{{hour.condition.icon}}" alt="{{hour.condition.text}}">
-        <h3 class="font-bold">{{hour.temp_c}}<span class="text-sm">°C</span></h3>
+        @if (ScaleUnit() === 'C') {
+            <h3 class="font-bold">{{hour.temp_c}}<span class="text-sm">°C</span></h3>
+        }
+        @else {
+             <h3 class="font-bold">{{hour.temp_f}}<span class="text-sm">°F</span></h3>
+        }
     </div>
     
     }
